@@ -23,5 +23,14 @@
       "name": "latexmk",
       "tools": ["latexmk"]
     }
-  ]
+  ],
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "never",
+      "source.fixAll.eslint": "never",
+      "source.organizeImports": "never"
+    }
+  }
 }

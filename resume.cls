@@ -67,7 +67,7 @@
 \def \printaddress #1{
   \begingroup
     \def \\ {\addressSep\ }
-    \leftline{#1}
+    \centerline{#1}
   \endgroup
   \par
   \addressskip
@@ -75,10 +75,10 @@
 
 % \printname is used to print the name as a page header
 \def \printname {
-  \begingroup
-    \namesize\bf \@name \hfil
-    \nameskip\break
-  \endgroup
+  \begin{center}
+    {\namesize\bfseries \@name}
+  \end{center}
+  \nameskip
 }
 
 %----------------------------------------------------------------------------------------
@@ -109,6 +109,10 @@
   \hrule % Horizontal line
   \begin{list}{}{ % List for each individual item in the section
     \setlength{\leftmargin}{0em} % Margin within the section
+    \setlength{\rightmargin}{0em} % Right margin
+    \setlength{\itemsep}{0pt} % Space between items
+    \setlength{\topsep}{0pt} % Space above the list
+    \setlength{\partopsep}{0pt} % Space below the list
   }
   \item[]
 }{
@@ -119,22 +123,48 @@
 %	WORK EXPERIENCE FORMATTING
 %----------------------------------------------------------------------------------------
 
-\newenvironment{rSubsection}[4]{ % 4 input arguments - company name, year(s) employed, job title and location
- {\bf #1} \hfill {#2} % Bold company name and date on the right
+\newenvironment{rWorkExperienceSubsection}[4]{ % 4 input arguments - job title, year(s) employed, company name and location
+ {\bf #1} \hfill {#2} % Bold job title and date on the right
  \ifthenelse{\equal{#3}{}}{}{ % If the third argument is not specified, don't print the job title and location line
   \\
-  {\em #3} \hfill {\em #4} % Italic job title and location
-  }\smallskip
-  \begin{list}{$\cdot$}{\leftmargin=0em} % \cdot used for bullets, no indentation
+  {#3} \hfill {#4} % Company name and location
+  } \vspace{0pt}
+  \begin{list}{$\bullet$}{\leftmargin=1.5em} % \cdot used for bullets, no indentation
    \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
   }{
   \end{list}
-  \vspace{0.5em} % Some space after the list of bullet points
+  \vspace{-5pt}
+}
+
+%----------------------------------------------------------------------------------------
+%	PROJECT FORMATTING
+%----------------------------------------------------------------------------------------
+
+\newenvironment{rProjectSubsection}[4]{ % 4 input arguments - project name, year(s) employed, link and display link
+    \textbf{#1} {\href{#3}{(#4)}} \hfill {#2} % Bold project name and date on the right
+    \begin{list}{$\bullet$}{\leftmargin=1.5em} % \cdot used for bullets, no indentation
+        \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
+    }{
+    \end{list}
+    \vspace{-5pt}
+}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION FORMATTING
+%----------------------------------------------------------------------------------------
+
+\newenvironment{rEducationSubsection}[3]{ % 3 input arguments - degree name, year(s) employed, school name
+    \textbf{#1}, {#3} \hfill {#2} % Bold degree name and date on the right
+    \begin{list}{$\bullet$}{\leftmargin=1.5em} % \cdot used for bullets, no indentation
+        \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
+    }{
+        \end{list}
+    \vspace{-5pt}
 }
 
 % The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
 \def\namesize{\LARGE} % Size of the name at the top of the document
-\def\addressskip{\smallskip} % The space between the two address (or phone/email) lines
-\def\sectionlineskip{\medskip} % The space above the horizontal line for each section
-\def\nameskip{\medskip} % The space after your name at the top
-\def\sectionskip{\medskip} % The space after the heading section
+\def\addressskip{\vspace{-5pt}} % The space between the two address (or phone/email) lines
+\def\sectionlineskip{\smallskip} % The space above the horizontal line for each section
+\def\nameskip{\smallskip} % The space after your name at the top
+\def\sectionskip{\smallskip} % The space after the heading section
