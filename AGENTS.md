@@ -11,7 +11,7 @@ Retrieve information by searching MCP Servers:
 - Notion
   - My Background (id: 394e1d08bfbc801d97cff3620367a17a)
   - Career (id: 277e1d08bfbc8076a1f3e30d043cda87)
-  - Target Job Application (id: 394e1d08bfbc80c890f4d532d968deba)
+  - Target Job Application (id: 3bde1d08bfbc806d9441c0f6fc8f4952)
 - GitHub
 
 ## Resume Crafting
@@ -24,3 +24,4 @@ Retrieve information by searching MCP Servers:
 - If the job description is mentioned in the Target Job Application under Notion "Target Job Application" page:
   - Use the job description to craft the resume.
   - Use the keywords from the job description to craft the resume.
+- Personal Information section has been finalised and should not be changed.
